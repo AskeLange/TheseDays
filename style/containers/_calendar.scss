@@ -1,0 +1,64 @@
+
+
+$caldi-height: 48px;
+
+.calendar { 
+  
+  height: 100%;
+
+  .calendar-body {
+
+    height: 100%;
+
+    .dailies {
+
+      display: flex;
+      width: 100%;
+      height: 100%;
+
+      overflow-x: hidden;
+      overflow-y: scroll;
+
+      .daily {
+
+        flex: 1;
+        height: fit-content;
+        border-left: 1px solid darken($prim, 5%);
+
+        .daily-header {
+
+          position: sticky;
+          top: 0;
+          
+          height: $caldi-height;
+          line-height: $caldi-height;
+          text-transform: capitalize;
+          text-align: center;
+          font-weight: 400;
+          font-size: 16px;
+
+          border-bottom: 1px solid darken($prim,5%);
+          background-color: $prim;
+
+          &:nth-child(1) {
+            
+            border-left: none;
+
+          }
+      
+        }
+
+        .daily-body {
+
+          padding: 8px;
+          height: 200vh;
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
