@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { switchView } from '../actions/navigation';
+import { switch_view } from '../actions/navigation';
 
 export default class Sidebar
   extends React.Component {
@@ -11,7 +11,7 @@ export default class Sidebar
   constructor (props) {
     super(props);
     this.state = {
-      navelems : []
+      navelems : { }
     };
   }
 
@@ -23,26 +23,27 @@ export default class Sidebar
     return (
       <div className="sidebar">
         <div className="navigation-elements">
-          { this.state.navelems.map (
-            this.renderElem.bind(this)
-          )}
+          { Object.keys(this.state.navelems).map(k => 
+              this.renderElem(k, this.state.navelems)
+            )
+          }
         </div>
       </div>
     )
   }
 
-  renderElem ( e ) {
+  renderElem ( k, l=this.state.navelems ) {
     return (
       <div className="navigation-element"
-        onClick={ this.switchView.bind(this, e) }>
+        onClick={ this.switchView.bind(this, k) }>
 
-        <svg viewBox={e.iconViewbox} className="icon">
-          <use xlinkHref={'#'+e.icon}>
+        <svg viewBox={l[k].iconViewbox} className="icon">
+          <use xlinkHref={'#'+l[k].icon}>
           </use>
         </svg>
 
         <div className="label">
-          {e.label}
+          {l[k].label}
         </div>
 
       </div>
@@ -53,9 +54,9 @@ export default class Sidebar
 
   // #region Actions
 
-  switchView ( navelem ) {
+  switchView ( key ) {
     this.props.store.dispatch (
-      switchView ( navelem.identifier )
+      switch_view ( key )
     );
   }
 

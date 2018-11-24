@@ -1,33 +1,64 @@
 
 
 import React from 'react';
-import View from '../view';
+import { switch_view } from '../../actions/navigation';
 
 export default class Home
   extends React.Component {
-
-  // #region Initilization
-
-  constructor(props) {
-    super(props);
-    this.params = {
-      label : 'Home',
-      icon : 'icon-home',
-      iconViewbox : '0 0 24 24',
-    };
-  }
-
-  // #endregion
 
   // #region Renders
 
   render() {
     return (
-      <View identifier="home" params={this.params} store={this.props.store}>
-        <div className="home-inner">
-          <div style={{ height: '200vh' }}></div>
+      <div className="home-content">
+
+        <div className="info">
+          <div className="title">
+            Welcome<br/>
+            to <span className="bold">Gaze</span>
+          </div>
         </div>
-      </View>
+
+        <div className="products">
+          <div className="list">
+            <div className="list-header">
+              <svg className="icon" viewBox="0 0 24 24">
+                <use xlinkHref="#icon-product">
+                </use>
+              </svg>
+
+              <span className="title">
+                Products
+              </span>
+            </div>
+
+            <div className="list-body">
+
+            </div>
+          </div>
+
+          <div className="actions">
+            <div className="action new-product" 
+              onClick={this.switchView.bind(this, 'pbacklog')}>
+              <svg className="icon" viewBox="0 0 24 24">
+                <use xlinkHref="#icon-new-product">
+                </use>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    );
+  }
+
+  // #endregion
+
+  // #region Actions
+
+  switchView ( identifier ) {
+    this.props.store.dispatch (
+      switch_view ( identifier )
     );
   }
 

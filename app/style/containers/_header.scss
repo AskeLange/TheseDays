@@ -1,0 +1,49 @@
+
+
+.app-header {
+
+  .actions {
+
+    position: absolute;
+    top: 0; right: $scrollbar-width;
+    width: fit-content; height: 100%;
+    white-space: none;
+
+    .action {
+
+      position: relative;
+      display: inline-block;
+      width: calc(#{$apphead-height} + 8px);
+      height: 100%;
+
+      border-right: 1px solid darken($prim, 3%);
+      cursor: pointer;
+
+      .icon {
+
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
+
+        width: 24px;
+        fill: $seco;
+
+      }
+      
+      &:nth-child(1) { 
+        
+        border-left: 1px solid darken($prim, 3%); 
+      
+      }
+
+      &:hover {
+
+        background-color: darken($prim, 1%);
+
+      }
+
+    }
+
+  }
+
+}

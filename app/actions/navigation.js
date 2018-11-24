@@ -1,15 +1,16 @@
 
 
-let pushView = ((identifier, params) => {
+let push_view = ((identifier, params) => {
   return {  
     type : 'PUSH_VIEW',
-    payload : Object.assign(
-      params, { identifier }
-    )
+    payload : {
+      params,
+      identifier
+    }
   };
 });
 
-let switchView = (identifier => {
+let switch_view = (identifier => {
   return {
     type : 'SWITCH_VIEW',
     payload : { identifier } 
@@ -17,6 +18,6 @@ let switchView = (identifier => {
 });
 
 export { 
-  pushView,
-  switchView 
+  push_view,
+  switch_view 
 };

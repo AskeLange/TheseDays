@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { pushView } from '../actions/navigation';
+import { push_view } from '../actions/navigation';
 
 export default class View 
   extends React.Component {
@@ -44,7 +44,7 @@ export default class View
         this.onStoreChange.bind ( this )
       );
 
-      this.props.store.dispatch ( pushView ( 
+      this.props.store.dispatch ( push_view ( 
         this.props.identifier,
         this.props.params
       ))

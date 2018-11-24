@@ -2,10 +2,12 @@
   "name": "thesedays",
   "version": "1.0.0",
   "description": "",
-  "main": "app/main.js",
+  "main": "server.js",
   "scripts": {
     "debug": "webpack --watch",
-    "minify": "webpack --watch -p"
+    "minify": "webpack --watch -p",
+    "start": "node server.js",
+    "inspect": "node --inspect server.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.1",
+    "express": "^4.16.4",
     "node-sass": "^4.10.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
