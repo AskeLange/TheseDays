@@ -12,7 +12,7 @@ export default class Header
   constructor (props) {
     super (props);
     this.state = {
-      products : [],
+      products : { },
       activeProduct : ''
     };
   }
@@ -21,32 +21,31 @@ export default class Header
 
   // #region Renders
 
-  render() {
-    return (
+  render() { return (
+
       <div className="app-header">
+        <div className="title">
+          { this.state.products != null &&
+            this.state.products[this.state.activeProduct] != null &&
+            this.state.products[this.state.activeProduct].label
+          }
+        </div>
+
         <div className="actions">
           
           {/* Products */}
-          <div className="action products">
+          <div className="action products"
+            onClick={ this.switchView.bind(this, 'home') }>
             <svg viewBox="0 0 24 24" className="icon">
               <use xlinkHref="#icon-product">
               </use>
             </svg>
           </div>
 
-          {/* Home */}
-          <div className="action home" 
-            onClick={ this.switchView.bind(this, 'home') }>
-            <svg viewBox="0 0 24 24" className="icon">
-              <use xlinkHref="#icon-home">
-              </use>
-            </svg>
-          </div>
-
         </div>  
       </div>
-    )
-  }
+
+  )}
 
   // #endregion
 
@@ -81,11 +80,11 @@ export default class Header
       );
 
       this.props.store.dispatch ( push_product (
-        'p1', { label : 'Product 1' }
+        'p1', { label : 'Algefarm' }
       ));
 
       this.props.store.dispatch ( push_product (
-        'p2', { label : 'Product 2' }
+        'p2', { label : 'Vindmølle' }
       ));
 
     }

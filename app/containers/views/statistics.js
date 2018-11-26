@@ -14,6 +14,7 @@ export default class Statistics
         label : 'Statistics',
         icon : 'icon-chart',
         iconViewbox : '0 0 24 24',
+        section : 'main'
       };
     }
   

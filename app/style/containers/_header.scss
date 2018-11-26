@@ -2,6 +2,16 @@
 
 .app-header {
 
+  .title {
+
+    margin-left: 24px;
+    line-height: $apphead-height;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 18px;
+
+  }
+
   .actions {
 
     position: absolute;

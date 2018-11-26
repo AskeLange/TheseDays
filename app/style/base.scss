@@ -2,7 +2,8 @@
 
 $prim: #fafafa;
 $seco: #ff7984; //rgb(64, 178, 206);
-$font-stack: 'Raleway', sans-serif;
+$fontstack: 'Raleway', sans-serif;
+$secondary-fontstack: 'Lora', serif;
 
 $apphead-height: 64px;
 $appside-width: 256px;
@@ -14,7 +15,7 @@ body {
   margin: 0;
   background-color: darken($prim, 3%);
   color: $seco;
-  font-family: $font-stack;
+  font-family: $fontstack;
   overflow: hidden;
 
   .app-container {
@@ -46,7 +47,7 @@ body {
     .app-upper {
 
       top: 0;
-      background-color: darken($prim, 3%);
+      background-color: $seco; //darken($prim, 3%);
 
     }
 

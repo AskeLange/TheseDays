@@ -25,7 +25,7 @@
       text-align: center;
 
       // color: darken($prim, 1%);
-      color: $seco;
+      color: $prim;
       opacity: .06;
 
     }
@@ -98,6 +98,68 @@
         overflow-x: hidden;
         overflow-y: scroll;
 
+        .product {
+
+          width: 100%;
+          height: 48px;
+          padding-left: 24px;
+          line-height: 48px;
+          
+          border-bottom: 1px solid darken($prim, 3%);
+          cursor: pointer;
+
+          .icon-container,
+          .label {
+
+            vertical-align: top;
+            display: inline-block;
+
+          }
+
+          .icon-container {
+
+            position: relative;
+            width: 0; height: 24px;
+            margin-right: 8px;
+            margin-top: 12px;
+
+            transition: 100ms ease-out;
+            overflow: hidden;
+
+            .icon {
+
+              position: absolute;
+              top: 50%; right: 0;
+              transform: translateY(-50%);
+
+              width: 18px;
+              fill: $seco;
+
+            }
+
+          }
+
+          .label {
+            
+            font-size: 14px;
+            font-weight: 300;
+
+          }
+
+          &:hover {
+
+            background-color: darken( $prim, 1% );
+
+            .icon-container {
+
+              width: 24px;
+
+            }
+
+          }
+
+        }
+
       }
 
       &:after {
@@ -123,7 +185,8 @@
       .action {
 
         border-radius: 2px;
-        background-color: lighten($seco, 5%);
+        background-color: $prim;
+        opacity: .9;
         cursor: pointer;
 
         .icon {
@@ -132,13 +195,13 @@
           top: 50%; left: 50%;
           transform: translate(-50%,-50%);
           width: 24px;
-          fill: $prim;
+          fill: $seco;
 
         }
 
         &:hover {
 
-          background-color: $seco;
+          opacity: 1;
 
         }
 

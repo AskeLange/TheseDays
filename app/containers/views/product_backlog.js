@@ -14,6 +14,7 @@ export default class ProductBacklog
         label : 'Product Backlog',
         icon : 'icon-log',
         iconViewbox : '0 0 24 24',
+        section : 'main'
       };
     }
   

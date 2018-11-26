@@ -14,6 +14,7 @@ export default class ProductBacklog
         label : 'Sprints',
         icon : 'icon-sprint',
         iconViewbox : '0 0 24 24',
+        section : 'main'
       };
     }
   

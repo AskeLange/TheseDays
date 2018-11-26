@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { switch_view } from '../actions/navigation';
+import { switch_view, push_section } from '../actions/navigation';
 
 export default class Sidebar
   extends React.Component {
@@ -11,7 +11,8 @@ export default class Sidebar
   constructor (props) {
     super(props);
     this.state = {
-      navelems : { }
+      elements : { },
+      sections : { }
     };
   }
 
@@ -19,35 +20,76 @@ export default class Sidebar
 
   // #region Renders
 
-  render ( ) {
+  render ( ) { 
+
+    // Shorthands
+    let scopy = this.state.sections;
+    let skeys = Object.keys(this.state.sections);
+
+    // Sorts sections
+    skeys.sort (( a, b ) => {
+      if ( scopy[a].order > scopy[b].order ) return 1;
+      if ( scopy[a].order < scopy[b].order ) return -1;
+      return 0;
+    });
+
+    // Returns
     return (
       <div className="sidebar">
         <div className="navigation-elements">
-          { Object.keys(this.state.navelems).map(k => 
-              this.renderElem(k, this.state.navelems)
-            )
-          }
+          { skeys.map (i => this.renderSection (i) )}
         </div>
       </div>
     )
+
   }
 
-  renderElem ( k, l=this.state.navelems ) {
+  renderSection ( sectionid ) { 
+    
+    // Filters elements
+    let elements = [ ];
+    Object.keys(this.state.elements).forEach( i => {
+      if ( this.state.elements[i].section == sectionid ) {
+        elements.push ( i );
+      }
+    });
+
+    // Returns
+    return (
+      <div className="section" key={'sbsection-'+sectionid}>
+        <div className="label">
+          { this.state.sections[sectionid].label }:
+        </div>
+
+        <div className="elements">
+          { elements.map (i => this.renderElement (i) ) }
+        </div>
+      </div>
+    );
+
+  }
+
+  renderElement ( k ) { 
+
+    // Returns
     return (
       <div className="navigation-element"
         onClick={ this.switchView.bind(this, k) }>
 
-        <svg viewBox={l[k].iconViewbox} className="icon">
-          <use xlinkHref={'#'+l[k].icon}>
-          </use>
-        </svg>
+        <div className="icon-container">
+          <svg viewBox={this.state.elements[k].iconViewbox} className="icon">
+            <use xlinkHref={'#'+this.state.elements[k].icon}>
+            </use>
+          </svg>
+        </div>
 
         <div className="label">
-          {l[k].label}
+          {this.state.elements[k].label}
         </div>
 
       </div>
     );
+
   }
 
   // #endregion
@@ -66,8 +108,9 @@ export default class Sidebar
 
   onStoreChange () {
     let state    = this.props.store.getState();
-    let navelems = state.navigation.elements;
-    this.setState ({ navelems });
+    let elements = state.navigation.elements;
+    let sections = state.navigation.sections;
+    this.setState ({ elements, sections });
   }
 
   componentDidMount () {
