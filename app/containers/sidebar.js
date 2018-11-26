@@ -54,6 +54,9 @@ export default class Sidebar
       }
     });
 
+    // Error handling
+    if ( elements.length == 0 ) return;
+
     // Returns
     return (
       <div className="section" key={'sbsection-'+sectionid}>

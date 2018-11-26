@@ -53,14 +53,17 @@
         .icon {
 
           left: 20px;
-          width: 16px;
+          width: 24px;
           fill: $seco;
+
+          opacity: .1;
+          z-index: 0;
 
         }
 
         .label {
 
-          left: 56px;
+          left: 32px;
           font-weight: 800;
           font-size: 13px;
           text-transform: uppercase;
@@ -70,16 +73,10 @@
         &:hover {
 
           background-color: darken($prim, 1%);
-
-          .icon {
-            
-            left: 24px;
-
-          }
-
+          
           .label {
 
-            left: 60px;
+            left: 36px;
 
           }
 
